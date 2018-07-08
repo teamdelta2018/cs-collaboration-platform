@@ -32,10 +32,10 @@
                             <mdb-item-body>
                                 <ul>
                                     <li>
-                                        <a href="#" class="waves-effect" mdbWavesEffect>Public</a>
+                                        <a routerLink="/public" routerLinkActive="active" href="#" class="waves-effect" mdbWavesEffect>Public</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="waves-effect" mdbWavesEffect>Private</a>
+                                        <a routerLink="/private" routerLinkActive="active" href="#" class="waves-effect" mdbWavesEffect>Private</a>
                                     </li>
                                 </ul>
                             </mdb-item-body>
@@ -67,7 +67,8 @@
         <logo>
             <!-- Breadcrumb-->
             <div class="breadcrumbs breadcrumbs-hidden-nav breadcrumb-dn mr-auto">
-                <p>CS Student Collabortation Platform</p>
+                <a routerLink="/home" routerLinkActive="active" href="#" class="waves-effect" mdbWavesEffect>CS Student Collabortation Platform</a>
+			
             </div>
             <!--/. Breadcrumb-->
 			<div *ngIf="authService.user | async" class="dropdown" dropdown>
@@ -125,7 +126,7 @@
 <main>
     <div class="container-fluid mt-5">
         <h2>Welcome Dudes</h2>
-        <app-home></app-home>
+        <router-outlet></router-outlet>
         <div style="height: 2000px"></div>
     </div>
 </main>

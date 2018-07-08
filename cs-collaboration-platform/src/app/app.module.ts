@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 
 import { AuthService } from './auth.service';
 
+
+import { RouterModule, Routes } from '@angular/router';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
@@ -15,15 +18,35 @@ import { MDBBootstrapModulesPro } from 'ng-uikit-pro-standard';
 import { MDBSpinningPreloader } from 'ng-uikit-pro-standard';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
+import { PrivateComponent } from './private/private.component';
+import { PublicComponent } from './public/public.component';
+
+const appRoutes: Routes = [
+  { path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  { path: 'home', component: HomeComponent },
+  { path: 'public', component: PublicComponent },
+  { path: 'private', component: PrivateComponent },
+  { path: '**', component: HomeComponent },
+];
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    PrivateComponent,
+    PublicComponent
   ],
   imports: [
+  
+	RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     BrowserModule,
 	FormsModule,
 	ReactiveFormsModule,
