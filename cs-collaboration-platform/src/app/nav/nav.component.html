@@ -107,12 +107,9 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown btn-group" dropdown>
-                    <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-                        Login/Register
+                    <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" (click)="googleSignIn()" mdbWavesEffect>
+                        Sign in with google
                     </a>
-                    <div class="dropdown-menu dropdown-primary dropdown-menu-right" role="menu">
-                        <a class="dropdown-item" (click)="googleSignIn()" href="#">Sign in with google</a>
-                    </div>
                 </li>
             </ul>
         </navlinks>
