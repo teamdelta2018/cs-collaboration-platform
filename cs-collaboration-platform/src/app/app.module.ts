@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +21,7 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { PrivateComponent } from './private/private.component';
 import { PublicComponent } from './public/public.component';
+import { DemoComponent } from './demo/demo.component';
 
 const appRoutes: Routes = [
   { path: '',
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'public', component: PublicComponent },
   { path: 'private', component: PrivateComponent },
+  { path: 'demo', component: DemoComponent },
   { path: '**', component: HomeComponent },
 ];
 
@@ -39,7 +42,8 @@ const appRoutes: Routes = [
     NavComponent,
     HomeComponent,
     PrivateComponent,
-    PublicComponent
+    PublicComponent,
+    DemoComponent
   ],
   imports: [
   
@@ -52,6 +56,7 @@ const appRoutes: Routes = [
 	ReactiveFormsModule,
 	AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+	AngularFirestoreModule,
 	//AngularFireModule.initializeApp(environment.firebase, 'cs-collaboration-platform'), // imports firebase/app needed for everything
     //AngularFireAuthModule, // imports firebase/auth, only needed for auth features
 	MDBBootstrapModulesPro.forRoot()
