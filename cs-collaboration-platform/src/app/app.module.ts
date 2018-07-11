@@ -22,6 +22,8 @@ import { HomeComponent } from './home/home.component';
 import { PrivateComponent } from './private/private.component';
 import { PublicComponent } from './public/public.component';
 import { DemoComponent } from './demo/demo.component';
+import { PostsComponent } from './posts/posts.component';
+import { GroupsComponent } from './groups/groups.component';
 
 const appRoutes: Routes = [
   { path: '',
@@ -43,7 +45,9 @@ const appRoutes: Routes = [
     HomeComponent,
     PrivateComponent,
     PublicComponent,
-    DemoComponent
+    DemoComponent,
+    PostsComponent,
+    GroupsComponent
   ],
   imports: [
   

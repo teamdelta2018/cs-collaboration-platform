@@ -122,12 +122,33 @@
 </header>
 <!--/.Double navigation-->
 
+
 <!--Main Layout-->
-<main>
+<div class="row">
+    <div class="col-sm-4">
+	</div>
+    <div class="col-sm-8">
+        <main>
+    <div class="container-fluid mt-5">
+
+<!-- Extended default form grid -->
+	    <router-outlet></router-outlet>
+        <div style="height: 2000px"></div>
+    </div>
+</main>
+    </div>
+    
+</div>
+
+<!--/Main layout-->
+
+
+<!--Main Layout-->
+<!-- <main>
     <div class="container-fluid mt-5">
         <h2>Welcome Dudes</h2>
         <router-outlet></router-outlet>
         <div style="height: 2000px"></div>
     </div>
-</main>
+</main> -->
 <!--/Main layout-->

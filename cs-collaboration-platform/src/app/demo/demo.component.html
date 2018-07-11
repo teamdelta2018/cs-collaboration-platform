@@ -6,3 +6,11 @@
       {{ item.email }}  {{item.admin}}
     </li>
   </ul>
+  
+  <ul>
+    <li *ngFor="let current of currents | async">
+      {{current.email}}
+    </li>
+  </ul>
+  
+ 
