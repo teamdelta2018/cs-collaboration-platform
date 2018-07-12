@@ -21,18 +21,36 @@ export class DemoComponent implements OnInit {
    
   }
 
-  checkForUser(user: string) {
-	  console.log("check user got: ", user);
+  checkForUser(email: string, username: string, admin: string) {
+    var present = false;
+	  console.log("check user got: ", email);
     this.current = this.database.collection('users').valueChanges();
     this.current.subscribe(data=>{
       console.log(data)
       data.forEach(function (value) {
-        console.log(value.username);
-        if (value.username == user) {
+        console.log(value.email);
+        if (value.email == email) {
           console.log("user found")
-          return true;
+          present = true;
+          ;
         }
       });
+      if (!present) {
+
+        console.log("this user is getting added")
+        this.database.collection("users").doc(email).set({
+          email: email,
+          username: username,
+          admin: true
+      })
+      .then(function() {
+          console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+          console.error("Error writing document: ", error);
+      });
+
+      }
       
     });
     
