@@ -7,8 +7,10 @@
     </li>
 </ul>
 email
-  <input #box (keyup)="0">
-    <p>{{box.value}}</p>
+    
+    <input #box type="email" [(ngModel)]="enterEmail" name="myEmail" #myEmail="ngModel" 
+    email pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+    <p>{{box.value}}</p>    
 username    
   <input #box2 (keyup)="0">
     <p>{{box2.value}}</p>
@@ -16,11 +18,12 @@ admin
   <input #box3 (keyup)="0">
     <p>{{box3.value}}</p>  
 <button (click)="checkForUser(box.value, box2.value, box3.value)">check for user!</button> 
+<button *ngIf="this.allowed" (click)="addUser(box.value, box2.value, box3.value)">add user!</button> 
 <ul>
     <li *ngFor="let current of currents | async">
       {{current.username}}
     </li>
 </ul>  
  
-  
+
  
