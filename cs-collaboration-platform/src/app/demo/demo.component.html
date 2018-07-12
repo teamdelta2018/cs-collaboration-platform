@@ -3,14 +3,17 @@
 </p>
 <ul>
     <li *ngFor="let item of items | async">
-      {{ item.email }}  {{item.admin}}
+      {{item.username}}
     </li>
-  </ul>
-  
-  <ul>
+</ul>
+  <input #box (keyup)="0">
+    <p>{{box.value}}</p>
+<button (click)="checkForUser(box.value)">check for user!</button> 
+<ul>
     <li *ngFor="let current of currents | async">
-      {{current.email}}
+      {{current.username}}
     </li>
-  </ul>
+</ul>  
+ 
   
  
