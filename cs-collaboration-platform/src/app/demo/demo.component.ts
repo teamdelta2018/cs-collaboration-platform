@@ -11,8 +11,11 @@ export class DemoComponent implements OnInit {
   items: Observable<any[]>;
   current: Observable<any[]>;
   public data: Array<any> =[];
-  allowed = false;
-  present = false;
+  allowed:boolean = false;
+  present:boolean = false;
+  validEmail:boolean = false;
+  validUsername:boolean = false;
+  admin:boolean = false;
   database: AngularFirestore;
   constructor(db: AngularFirestore) { 
 
@@ -25,25 +28,53 @@ export class DemoComponent implements OnInit {
 
   checkForUser(email: string, username: string, admin: string) {
     var present = false;
+    let emailTaken = false;
+    let usernameTaken = false;
     this.current = this.database.collection('users').valueChanges();
+    var derp = this.current.toPromise()
+    .then((response) => response);
+    console.log(derp)
     this.current.subscribe(data=>{
       var count = 0;
       data.forEach(function (value) {
-        if (value.email == email) {
+        if ((value.email == email) || (value.username == username)) {
           //console.log("user found", email);
           present = true;
-          
+          if (value.username == username) {
+            console.log("username taken");
+            usernameTaken = true;
+      
+          }
+          if (value.email == email) {
+            console.log("email taken");
+            emailTaken = true; 
+          }
           ;
         }
         count++;
       });
+      this.validUsername = !usernameTaken;
+      this.validEmail = !emailTaken;
       if (present) {
-        console.log(email, " already present, cannot add!!")
         this.allowed = false;
+
 
       }
       else {
-        console.log(email, " not found, allowed to add!!")
+        console.log("allowed to add");
+        var holder = email.split("@");
+        console.log(holder);
+        //var pattern = "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}";
+        //console.log(email.search);
+        
+        var re = new RegExp("^([a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,})$");
+       if (re.test(email)) {
+         console.log("Valid email", email);
+         
+       } else {
+         console.log("Invalid email", email);
+         this.validEmail = false;
+       }
         this.allowed = true;
 
       }
@@ -56,15 +87,13 @@ export class DemoComponent implements OnInit {
   addUser (email: string, username: string, admin: string) {
 
     
-
-    console.log("this user is getting added", email);
     this.database.collection("users").doc(email).set({
         email: email,
         username: username,
         admin: true
     })
     .then(function() {
-        console.log("Document successfully written!");
+        console.log("Document successfully written!", email);
     })
     .catch(function(error) {
         console.error("Error writing document: ", error);
@@ -72,6 +101,8 @@ export class DemoComponent implements OnInit {
     this.allowed = false;
 
   }
+
+  
   
   ngOnInit() {
   }

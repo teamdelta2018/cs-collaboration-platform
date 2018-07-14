@@ -1,6 +1,4 @@
-<p>
-  demo works!
-</p>
+
 <ul>
     <li *ngFor="let item of items | async">
       Email: {{item.email}} Username: {{item.username}} Admin: {{item.admin}}
@@ -10,10 +8,13 @@ email
     
     <input #box type="email" [(ngModel)]="enterEmail" name="myEmail" #myEmail="ngModel" 
     email pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
-    <p>{{box.value}}</p>    
+    <p *ngIf="this.validEmail">{{box.value}} is a valid email</p>  
+    <p *ngIf="!this.validEmail">{{box.value}} is invalid email</p>  
 username    
   <input #box2 (keyup)="0">
     <p>{{box2.value}}</p>
+    <p *ngIf="this.validUsername">{{box2.value}} is a valid username</p>  
+    <p *ngIf="!this.validUsername">{{box2.value}} is invalid username</p>
 admin    
   <input #box3 (keyup)="0">
     <p>{{box3.value}}</p>  
@@ -24,6 +25,7 @@ admin
       {{current.username}}
     </li>
 </ul>  
- 
+
+
 
  
