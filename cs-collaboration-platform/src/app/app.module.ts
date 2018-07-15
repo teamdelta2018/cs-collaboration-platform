@@ -34,6 +34,7 @@ const appRoutes: Routes = [
   { path: 'public', component: PublicComponent },
   { path: 'private', component: PrivateComponent },
   { path: 'demo', component: DemoComponent },
+  { path: 'posts', component: PostsComponent },
   { path: '**', component: HomeComponent },
 ];
 

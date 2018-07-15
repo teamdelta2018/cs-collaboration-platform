@@ -61,21 +61,41 @@ export class DemoComponent implements OnInit {
 
       }
       else {
-        console.log("allowed to add");
+       
         var holder = email.split("@");
         console.log(holder);
         //var pattern = "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}";
         //console.log(email.search);
+        console.log
+        if (holder[1] == "email.franklin.edu" || holder[1] == "franklin.edu") {
+          console.log("Valid Franklin email format");
+        } else {
+          console.log("Invalid Franklin email format");
+          this.allowed = false;
+          this.validEmail = false;
+        }
         
-        var re = new RegExp("^([a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,})$");
-       if (re.test(email)) {
-         console.log("Valid email", email);
-         
+      var re = new RegExp("^([a-zA-Z0-9.-_]{1,})$");
+      var regUN = new RegExp("^([a-zA-Z0-9.-_]{6,8})$");
+       if (re.test(holder[0])) {
+         console.log("Valid email prefix", email);
        } else {
-         console.log("Invalid email", email);
+         console.log("Invalid email prefix", email);
+         this.allowed = false;
          this.validEmail = false;
        }
+       if (regUN.test(username)) {
+        console.log("Valid username", username);
+      } else {
+        console.log("Invalid username", username);
+        this.allowed = false;
+        this.validUsername = false;
+      }
+
+      if (this.validEmail && this.validUsername) {
         this.allowed = true;
+      }
+        
 
       }
      
