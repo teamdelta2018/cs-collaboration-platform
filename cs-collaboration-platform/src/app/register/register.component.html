@@ -1,0 +1,26 @@
+<div>Email</div>   
+    <input type="email" [(ngModel)]="enterEmail" name="myEmail" #myEmail="ngModel" 
+    email pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>  
+    <!-- <p *ngIf="!this.validEmail">{{myEmail.value}} is invalid email, try again</p>   -->
+
+<div>Username</div>
+    <input type="text" [(ngModel)]="enterUsername" name="myUsername" #myUsername="ngModel" 
+    username pattern="[a-zA-Z0-9.-_]{6,8}" required>    
+    <!-- <input #box2 (keyup)="0"> -->
+    <p>{{myUsername.value}}</p> 
+    <!-- <p *ngIf="!this.validUsername">{{myUsername.value}} is invalid username, try again</p> -->
+ 
+  <div>Password</div>
+    <input type="text" [(ngModel)]="enterPassword" name="myPassword" #myPassword="ngModel" 
+    username pattern="[a-zA-Z0-9.-_]{6,8}" required>    
+    <!-- <input #box2 (keyup)="0"> -->
+    <p>{{myPassword.value}}</p>  
+    <!-- <p *ngIf="!this.validAdminKey">{{myPassword.value}} is invalid admin key, try again</p> -->
+
+  <div>Admin Key</div>
+    <input type="text" [(ngModel)]="enterAdminKey" name="myAdminKey" #myAdminKey="ngModel" 
+    username pattern="[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-{1}[a-zA-Z0-9]{4}" required>    
+    <!-- <input #box2 (keyup)="0"> -->
+    <p>{{myAdminKey.value}}</p>  
+    <!-- <p *ngIf="!this.validAdminKey">{{myAdminKey.value}} is invalid admin key, try again</p>  -->
+<button class="btn btn-outline-black btn-rounded" (click)="signUp(myEmail.value, myUsername.value, myPassword.value, myAdminKey.value)">Sign Up</button> 

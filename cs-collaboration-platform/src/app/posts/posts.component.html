@@ -1,24 +1,5 @@
-<p>
-  posts works!
-</p>
+
 <div *ngIf="authService.user | async">
-
-  <!--Trigger-->
-  <p>
-    {{ (authService.user | async)?.email }} posts
-  </p>
-  <ul *ngFor="let item of items | async">
-   <p *ngIf="(authService.user | async)?.email && this.contains(item.id, ((authService.user | async)?.email))" > ID: {{item.id}} Title: {{item.title}} Created: {{item.created}} Edited: {{item.edited}} Content: {{item.content}}</p> 
-  </ul>
-  <!--Trigger-->
-  <p>
-    {{ (authService.user | async)?.email }} responses
-  </p>
-  <ul *ngFor="let item of responses | async">
-    <p *ngIf="(authService.user | async)?.email && this.contains(item.id, ((authService.user | async)?.email))" > ID: {{item.id}} Title: {{item.post}} Created: {{item.created}} Content: {{item.content}}</p> 
-  </ul>
-
-
   <!--Trigger-->
   <p>
    all posts

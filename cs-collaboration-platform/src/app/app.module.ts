@@ -24,6 +24,11 @@ import { PublicComponent } from './public/public.component';
 import { DemoComponent } from './demo/demo.component';
 import { PostsComponent } from './posts/posts.component';
 import { GroupsComponent } from './groups/groups.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ConnectionsComponent } from './connections/connections.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MypostsComponent } from './myposts/myposts.component';
 
 const appRoutes: Routes = [
   { path: '',
@@ -35,6 +40,11 @@ const appRoutes: Routes = [
   { path: 'private', component: PrivateComponent },
   { path: 'demo', component: DemoComponent },
   { path: 'posts', component: PostsComponent },
+  { path: 'myposts', component: MypostsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'groups', component: GroupsComponent },
+  { path: 'connections', component: ConnectionsComponent },
   { path: '**', component: HomeComponent },
 ];
 
@@ -48,7 +58,12 @@ const appRoutes: Routes = [
     PublicComponent,
     DemoComponent,
     PostsComponent,
-    GroupsComponent
+    GroupsComponent,
+    LoginComponent,
+    RegisterComponent,
+    ConnectionsComponent,
+    ProfileComponent,
+    MypostsComponent
   ],
   imports: [
   

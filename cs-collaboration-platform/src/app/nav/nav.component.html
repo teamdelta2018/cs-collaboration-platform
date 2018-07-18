@@ -41,7 +41,10 @@
                                         <a routerLink="/demo" routerLinkActive="active" href="#" class="waves-effect" mdbWavesEffect>Add User</a>
                                     </li>
                                     <li>
-                                        <a routerLink="/posts" routerLinkActive="active" href="#" class="waves-effect" mdbWavesEffect>Posts</a>
+                                        <a routerLink="/posts" routerLinkActive="active" href="#" class="waves-effect" mdbWavesEffect>All Posts</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/myposts" routerLinkActive="active" href="#" class="waves-effect" mdbWavesEffect>My Posts</a>
                                     </li>
                                 </ul>
                             </mdb-item-body>
@@ -86,7 +89,7 @@
 
 				<!--Menu-->
 				<div class="dropdown-menu dropdown-primary">
-					<a class="dropdown-item" href="#">My Profile</a>
+					<a routerLink="/profile" routerLinkActive="active" class="dropdown-item" href="#">My Profile</a>
 					<a class="dropdown-item" (click)="logout()" href="#">Logout</a>
 				</div>
 			</div>
@@ -94,29 +97,39 @@
 
         <navlinks>
             <ul class="nav navbar-nav nav-flex-icons ml-auto ie-double-nav ie-hidden-double-nav">
+                
                 <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect>
-                        <i class="fa fa-envelope"></i>
-                        <span class="clearfix d-none d-sm-inline-block">Contact</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect>
+                    <a routerLinkActive="active" class="nav-link waves-light" mdbWavesEffect>
                         <i class="fa fa-comments-o"></i>
-                        <span class="clearfix d-none d-sm-inline-block">Groups</span>
+                        <span routerLink="/groups" class="clearfix d-none d-sm-inline-block">Groups</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link waves-light" mdbWavesEffect>
                         <i class="fa fa-user"></i>
-                        <span class="clearfix d-none d-sm-inline-block">Connections</span>
+                        <span routerLink="/connections" routerLinkActive="active" class="clearfix d-none d-sm-inline-block">Connections</span>
                     </a>
                 </li>
-                <li class="nav-item dropdown btn-group" dropdown>
-                    <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" (click)="googleSignIn()" mdbWavesEffect>
-                        Sign in with google
-                    </a>
+                <li class="nav-item ">
+                        <a class="nav-link waves-light" mdbWavesEffect>
+                            <i class="fa fa-user"></i>
+                                <span class="clearfix d-none d-sm-inline-block" (click)="googleSignIn()">Google Sign In</span>
+                        </a>        
                 </li>
+                <div class="dropdown" dropdown>
+
+                    <!--Trigger-->
+                    <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light"  mdbWavesEffect>
+                        login/register
+                    </a>
+    
+                    <!--Menu-->
+                    <div class="dropdown-menu dropdown-primary">
+                        <a routerLink="/login" routerLinkActive="active" class="dropdown-item" href="#">login</a>
+                        <a routerLink="/register" routerLinkActive="active" class="dropdown-item" href="#">register</a>
+                    </div>
+                </div>
+                
             </ul>
         </navlinks>
     </mdb-navbar>
@@ -128,7 +141,7 @@
 
 <!--Main Layout-->
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-2">
 	</div>
     <div class="col-sm-8">
         <main>

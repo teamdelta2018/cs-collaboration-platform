@@ -1,0 +1,34 @@
+
+  <div *ngIf="authService.user | async">
+  
+    <!--Trigger-->
+    <p>
+      {{ (authService.user | async)?.email }} posts
+    </p>
+    <ul *ngFor="let item of items | async">
+     <div *ngIf="(authService.user | async)?.email && this.contains(item.id, ((authService.user | async)?.email))" > 
+       ID: {{item.id}} Title: {{item.title}} Created: {{item.created}} Edited: {{item.edited}} Content: {{item.content}}
+       <button class="btn btn-outline-blue btn-rounded" (click)="showMyEdit()">update</button><button class="btn btn-outline-red btn-rounded" (click)="deletePost()">delete</button> 
+       
+      <div *ngIf="showEdit">
+       
+    
+      <div>Update</div>
+       <input type="text" [(ngModel)]="editText" name="myEdit" #myEdit="ngModel" 
+         required>    
+       
+      
+       <button class="btn btn-outline-black btn-rounded" (click)="updatePost(item.id, this.myEdit.model)">Submit</button> 
+       <button class="btn btn-outline-black btn-rounded" (click)="deletePost()">delete test</button> 
+      </div>
+    </div>
+     
+    </ul>
+    <!--Trigger-->
+    <p>
+      {{ (authService.user | async)?.email }} responses
+    </p>
+    <ul *ngFor="let item of responses | async">
+      <p *ngIf="(authService.user | async)?.email && this.contains(item.id, ((authService.user | async)?.email))" > ID: {{item.id}} Post: {{item.post}} Created: {{item.created}} Content: {{item.content}}</p> 
+    </ul>
+  </div>
