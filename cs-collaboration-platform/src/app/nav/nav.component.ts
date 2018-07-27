@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable , Subject, } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -9,9 +11,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  
-  constructor(public authService: AuthService) { }
-
+  adminStatus: boolean = false;
+  items: Observable<any[]>;
+  auth: AuthService;
+  constructor(public authService: AuthService, public db: AngularFirestore) { 
+    this.items = db.collection('users').valueChanges();
+    this.auth = authService;
+  }
+   
   logout() {
     this.authService.logout();
   }
@@ -23,7 +30,16 @@ export class NavComponent implements OnInit {
   getuser() {
    console.log(this.authService.getuser());
   }
-
-  ngOnInit() {
+  getAdminStatus (email: string) {
+    if (email == "csns101@gmail.com") {
+      this.adminStatus = true;
+    }
+    return this.adminStatus;
+     
   }
+  
+  ngOnInit() {
+    
+  }
+
 }

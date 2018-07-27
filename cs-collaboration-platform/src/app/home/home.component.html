@@ -3,21 +3,36 @@
         <div class="jcontent">
             <div class="jmargins">
                 <h1 style="text-align:center;"><strong>Welcome to the CS Collaboration Platform!</strong></h1>
-                <p style="margin-top:20px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat,
-                laboriosam, voluptatem, optio vero odio nam sit officia accusamus
-                minus error nisi architecto nulla ipsum dignissimos. Odit sed qui,
-                dolorum!.</p>
-                <a class="btn btn-outline-black btn-rounded">View project</a>
+                <p style="margin-top:20px;">Add a post or enter a workspace</p>
+                
             </div>
+
+            <a class="btn btn-outline-black btn-rounded" (click)="changeShowAddPost()">Add Post</a>
+            <div *ngIf="this.showAddPost" > 
+                    
+                    
+                  
+                    
+                 
+                    <div>Title</div>
+                    <input type="text" [(ngModel)]="addTitle" name="myTitle" #myTitle="ngModel" 
+                      required>    
+                    <div>Content</div>
+                    <input type="text" [(ngModel)]="editContent" name="myContent" #myContent="ngModel" 
+                      required>
+                    <a class="btn btn-outline-black btn-rounded" (click)="getPostId()">Click here to submit</a>
+                    <button class="btn btn-outline-black btn-rounded" (click)="addPost(this.myTitle.model, this.myContent.model)">Submit</button> 
+                   </div>
+                 
         </div>
     </div>
     <div class="userbar">
         <div class="umargins">
             <div class="online">
-            <h3><b>Online</b></h3>
-            <p><a><b>Placeholder User #1</b><br><i>email: userone@teamdelta.com</i></a></p>
-            <p><a><b>Placeholder User #2</b><br><i>email: usertwo@teamdelta.com</i></a></p>
-            <p><a><b>Placeholder User #3</b><br><i>email: userthree@teamdelta.com</i></a></p>
+            <h3><b>Recent Activity</b></h3>
+            <p><a><b>csns101</b><br><i>csns101@gmail.com</i></a></p>
+            <p><a><b>Frankly18</b><br><i>franklinpracticum2018@gmail.com</i></a></p>
+            
             </div>
             <div class="offline">
             <h3><b>Offline</b></h3>

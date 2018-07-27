@@ -37,10 +37,10 @@
                                     <li>
                                         <a routerLink="/private" routerLinkActive="active" href="#" class="waves-effect" mdbWavesEffect>Private</a>
                                     </li>
-									<li>
+									<li *ngIf="this.getAdminStatus(((authService.user | async)?.email))">
                                         <a routerLink="/demo" routerLinkActive="active" href="#" class="waves-effect" mdbWavesEffect>Add User</a>
                                     </li>
-                                    <li>
+                                    <li *ngIf="this.getAdminStatus(((authService.user | async)?.email))">
                                         <a routerLink="/posts" routerLinkActive="active" href="#" class="waves-effect" mdbWavesEffect>All Posts</a>
                                     </li>
                                     <li>

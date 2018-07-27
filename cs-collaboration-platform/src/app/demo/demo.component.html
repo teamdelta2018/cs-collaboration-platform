@@ -8,7 +8,7 @@
     <input #box type="email" [(ngModel)]="enterEmail" name="myEmail" #myEmail="ngModel" 
     email pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
     <p *ngIf="this.validEmail">{{box.value}} is a valid email</p>  
-    <p *ngIf="!this.validEmail">{{box.value}} is invalid email</p>  
+    <p>Must be a Franklin or Google email</p>  
 
 <div>username</div>
     <input #box2 type="text" [(ngModel)]="enterUsername" name="myUsername" #myUsername="ngModel" 
@@ -16,13 +16,11 @@
     <!-- <input #box2 (keyup)="0"> -->
     <p>{{box2.value}}</p>
     <p *ngIf="this.validUsername">{{box2.value}} is a valid username</p>  
-    <p *ngIf="!this.validUsername">{{box2.value}} is invalid username</p>
+    <p>  Username must be between 6 and 8 characters</p>
  
-<div>admin</div>   
-  <input #box3 (keyup)="0">
-    <p>{{box3.value}}</p>  
-<button class="btn btn-outline-black btn-rounded" (click)="checkForUser(box.value, box2.value, box3.value)">check for user!</button> 
-<button *ngIf="this.allowed" class="btn btn-outline-green btn-rounded" (click)="addUser(box.value, box2.value, box3.value)">add user!</button> 
+  
+<button class="btn btn-outline-black btn-rounded" (click)="checkForUser(box.value, box2.value)">check for user!</button> 
+<button *ngIf="this.allowed" class="btn btn-outline-green btn-rounded" (click)="addUser(box.value, box2.value)">add user!</button> 
 <ul>
     <li *ngFor="let current of currents | async">
       {{current.username}}

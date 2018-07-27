@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable , Subject, } from 'rxjs';
-import {switchMap} from 'rxjs/operators';
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
@@ -17,7 +17,7 @@ export class DemoComponent implements OnInit {
   validUsername:boolean = false;
   admin:boolean = false;
   database: AngularFirestore;
-  constructor(db: AngularFirestore) { 
+  constructor(db: AngularFirestore, public authService: AuthService) { 
 
    
 
@@ -67,7 +67,7 @@ export class DemoComponent implements OnInit {
         //var pattern = "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}";
         //console.log(email.search);
         console.log
-        if (holder[1] == "email.franklin.edu" || holder[1] == "franklin.edu") {
+        if (holder[1] == "email.franklin.edu" || holder[1] == "franklin.edu" || holder[1] == "gmail.com") {
           console.log("Valid Franklin email format");
         } else {
           console.log("Invalid Franklin email format");
@@ -104,13 +104,16 @@ export class DemoComponent implements OnInit {
     
   }
 
-  addUser (email: string, username: string, admin: string) {
+  addUser (email: string, username: string) {
 
-    
+    this.authService.signup(email, "password");
     this.database.collection("users").doc(email).set({
         email: email,
         username: username,
-        admin: true
+        admin: false,
+        postcount: 2,
+        responsecount: 2
+
     })
     .then(function() {
         console.log("Document successfully written!", email);
