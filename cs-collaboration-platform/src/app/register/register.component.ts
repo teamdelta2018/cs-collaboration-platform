@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     this.database.collection("users").doc(email).set({
       email: email,
       username: username,
-      admin: true,
+      admin: false,
       postcount: 0,
       responsecount: 0
   })

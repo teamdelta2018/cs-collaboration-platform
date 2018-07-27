@@ -111,8 +111,8 @@ export class DemoComponent implements OnInit {
         email: email,
         username: username,
         admin: false,
-        postcount: 2,
-        responsecount: 2
+        postcount: 0,
+        responsecount: 0
 
     })
     .then(function() {

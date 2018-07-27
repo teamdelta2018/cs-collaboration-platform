@@ -31,9 +31,23 @@ export class NavComponent implements OnInit {
    console.log(this.authService.getuser());
   }
   getAdminStatus (email: string) {
-    if (email == "csns101@gmail.com") {
-      this.adminStatus = true;
-    }
+      var currentcount = 0;
+      var emailhold = "";
+      this.items.subscribe(data=> {
+        console.log("users", data);
+        for (var i = 0; i < (data.length); i++) {
+          var user = data[i];
+          console.log(i, user.email); 
+          if (user.email == email) {
+            console.log(user.email, " admin status is : ", user.admin);
+            this.adminStatus = user.admin;
+           
+            
+          }
+        }
+        
+      });
+    
     return this.adminStatus;
      
   }
