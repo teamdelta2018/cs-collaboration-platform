@@ -1,6 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { AuthService } from './auth.service';
 import { AppModule } from './app.module';
 

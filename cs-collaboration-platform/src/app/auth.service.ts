@@ -42,9 +42,11 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Success!', value);
+        alert('Success! user created');
       })
       .catch(err => {
         console.log('Something went wrong:',err.message);
+        alert('Something went wrong: ' + err.message);
       });    
   }
 
@@ -54,9 +56,12 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Nice, it worked!');
+        alert( email + ' logged in successfully');
+        window.location.reload()
       })
       .catch(err => {
         console.log('Something went wrong:',err.message);
+        alert('Something went wrong: ' + err.message);
       });
   }
 
@@ -64,6 +69,7 @@ export class AuthService {
     this.myAuth
       .auth
       .signOut();
+    window.location.reload()  
   }
   
    

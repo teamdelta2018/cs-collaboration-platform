@@ -68,9 +68,10 @@ export class DemoComponent implements OnInit {
         //console.log(email.search);
         console.log
         if (holder[1] == "email.franklin.edu" || holder[1] == "franklin.edu" || holder[1] == "gmail.com") {
-          console.log("Valid Franklin email format");
+          console.log("Valid  email format");
         } else {
-          console.log("Invalid Franklin email format");
+          console.log("Invalid email format");
+          alert("Invalid email format, @email.franklin.edu || @franklin.edu || @gmail.com");
           this.allowed = false;
           this.validEmail = false;
         }
@@ -88,6 +89,7 @@ export class DemoComponent implements OnInit {
         console.log("Valid username", username);
       } else {
         console.log("Invalid username", username);
+        alert("Invalid username");
         this.allowed = false;
         this.validUsername = false;
       }
@@ -117,9 +119,12 @@ export class DemoComponent implements OnInit {
     })
     .then(function() {
         console.log("Document successfully written!", email);
+        alert("Student user " + username + " added, email is: " + email);
+        window.location.reload()
     })
     .catch(function(error) {
         console.error("Error writing document: ", error);
+        alert("Student user " + username + " not added: " + error);
     });
     this.allowed = false;
 
