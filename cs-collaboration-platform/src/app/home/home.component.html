@@ -15,13 +15,13 @@
                     
                  
                     <div>Title</div>
-                    <input type="text" name="myTitle"  
+                    <input type="text" #myTitle  
                       required>    
                     <div>Content</div>
-                    <input type="text" name="myContent" 
+                    <input type="text" #myContent 
                       required>
                     <a *ngIf="!this.showSubmitFinalize" class="btn btn-outline-black btn-rounded" (click)="getPostId();changeShowSubmitFinalize();">Submit Post?</a>
-                    <button *ngIf="this.showSubmitFinalize" class="btn btn-outline-black btn-rounded" (click)="addPost(this.myTitle.model, this.myContent.model);changeShowAddPost();changeShowSubmitFinalize();myTitle.value='';myContent.value='';">Click Again to Submit</button> 
+                    <button *ngIf="this.showSubmitFinalize" class="btn btn-outline-black btn-rounded" (click)="addPost(myTitle.value, myContent.value);changeShowAddPost();changeShowSubmitFinalize();myTitle.value='';myContent.value='';">Click Again to Submit</button> 
                    </div>
                  
         </div>
