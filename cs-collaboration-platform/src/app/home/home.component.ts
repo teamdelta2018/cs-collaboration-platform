@@ -10,6 +10,7 @@ import { Observable , Subject, } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   showAddPost: boolean = false;
+  showSubmitFinalize: boolean = false;
   totalPosts: number = 0;
   loggedInEmail: string;
   postId: string;
@@ -28,9 +29,26 @@ export class HomeComponent implements OnInit {
    }
 
   
-   changeShowAddPost() {
-    this.showAddPost = true;
+  changeShowAddPost() {
+    if (this.showAddPost) {
+      this.showAddPost = false;
+    }
+    else{
+      this.showAddPost = true;
+    }
     this.getUserEmail();
+  }
+
+  changeShowSubmitFinalize() {
+    if (this.showSubmitFinalize) {
+      this.showSubmitFinalize = false;
+    }
+    else{
+      this.showSubmitFinalize = true;
+    }
+  }
+
+  clear() {
   }
   
 
@@ -39,10 +57,10 @@ export class HomeComponent implements OnInit {
     var currentcount = 0;
     var emailhold = "";
     this.items.subscribe(data=> {
-      console.log("users", data);
+      //console.log("users", data);
       for (var i = 0; i < (data.length); i++) {
         var user = data[i];
-        console.log(i, user.email); 
+        //console.log(i, user.email); 
         if (user.email == this.loggedInEmail) {
           console.log("They Match", user.postcount);
           var intholder = Number(user.postcount);
@@ -83,6 +101,7 @@ export class HomeComponent implements OnInit {
     })
     .then(function() {
         console.log("Document successfully updated!");
+        alert("Post Added Successfully: " + idHolder);
         
     })
     .catch(function(error) {
@@ -108,7 +127,7 @@ export class HomeComponent implements OnInit {
   }
   getUserEmail() {
     this.auth.user.subscribe(mydata=>{
-         console.log(mydata.email);
+         console.log("Email is : ", mydata.email);
          this.loggedInEmail = mydata.email;
 
       });

@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AuthService} from '../auth.service';
+import { AppModule } from '../app.module';
+import { APP_BASE_HREF } from '@angular/common';
 import { MypostsComponent } from './myposts.component';
 
 describe('MypostsComponent', () => {
@@ -8,7 +10,8 @@ describe('MypostsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MypostsComponent ]
+      providers: [AuthService, {provide: APP_BASE_HREF, useValue: '/'}],
+      imports: [AppModule]
     })
     .compileComponents();
   }));

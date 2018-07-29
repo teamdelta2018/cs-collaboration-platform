@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AuthService} from '../auth.service';
+import { AppModule } from '../app.module';
+import { APP_BASE_HREF } from '@angular/common';
 import { NavComponent } from './nav.component';
 
 describe('NavComponent', () => {
@@ -8,7 +10,8 @@ describe('NavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavComponent ]
+      providers: [AuthService, {provide: APP_BASE_HREF, useValue: '/'}],
+      imports: [AppModule]
     })
     .compileComponents();
   }));

@@ -34,10 +34,10 @@ export class NavComponent implements OnInit {
       var currentcount = 0;
       var emailhold = "";
       this.items.subscribe(data=> {
-        console.log("users", data);
+        //console.log("users", data);
         for (var i = 0; i < (data.length); i++) {
           var user = data[i];
-          console.log(i, user.email); 
+          //console.log(i, user.email); 
           if (user.email == email) {
             console.log(user.email, " admin status is : ", user.admin);
             this.adminStatus = user.admin;

@@ -5,13 +5,13 @@
     </li>
 </ul>
 <div>email</div>   
-    <input #box type="email" [(ngModel)]="enterEmail" name="myEmail" #myEmail="ngModel" 
+    <input #box type="email"  name="myEmail" 
     email pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
     <p *ngIf="this.validEmail">{{box.value}} is a valid email</p>  
     <p>Must be a Franklin or Google email</p>  
 
 <div>username</div>
-    <input #box2 type="text" [(ngModel)]="enterUsername" name="myUsername" #myUsername="ngModel" 
+    <input #box2 type="text"  name="myUsername"  
     username pattern="[a-zA-Z0-9.-_]{6,8}" required>    
     <!-- <input #box2 (keyup)="0"> -->
     <p>{{box2.value}}</p>

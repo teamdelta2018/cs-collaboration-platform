@@ -1,3 +1,5 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConnectionsComponent } from './connections.component';
@@ -8,7 +10,8 @@ describe('ConnectionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConnectionsComponent ]
+      declarations: [ ConnectionsComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
